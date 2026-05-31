@@ -70,6 +70,9 @@
         box-shadow: 0 12px 24px rgba(0,0,0,0.06);
         border-color: #e2e8f0;
     }
+    .product-card:hover .product-img {
+        transform: scale(1.05);
+    }
     .product-img-placeholder {
         height: 180px;
         background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
@@ -231,9 +234,26 @@
         @forelse($products as $product)
             <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                 <div class="product-card">
-                    <!-- Placeholder Image (Can be replaced with real image later) -->
-                    <div class="product-img-placeholder">
-                        <i class="bi bi-image text-opacity-25"></i>
+                    <!-- Use local image if exists, else fallback to initials -->
+                    <div class="product-img-placeholder" style="background:#f1f5f9; padding:0; overflow:hidden;">
+                        @php
+                            $extensions = ['png', 'jpg', 'jpeg'];
+                            $hasImage = false;
+                            $imagePath = '';
+                            foreach($extensions as $ext) {
+                                if(file_exists(public_path('images/products/' . $product->code . '.' . $ext))) {
+                                    $imagePath = 'images/products/' . $product->code . '.' . $ext;
+                                    $hasImage = true;
+                                    break;
+                                }
+                            }
+                        @endphp
+
+                        @if($hasImage)
+                            <img src="{{ asset($imagePath) }}" alt="{{ $product->name }}" style="width:100%; height:100%; object-fit:cover; transition: transform 0.3s;" class="product-img" loading="lazy">
+                        @else
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($product->name) }}&background=random&color=fff&size=400&font-size=0.4" alt="{{ $product->name }}" style="width:100%; height:100%; object-fit:cover; transition: transform 0.3s;" class="product-img" loading="lazy">
+                        @endif
                     </div>
                     
                     <div class="product-body">

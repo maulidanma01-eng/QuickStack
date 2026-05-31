@@ -17,17 +17,21 @@
         body {
             min-height: 100vh;
             background: linear-gradient(135deg, #0f172a 0%, #1a2e1a 50%, #0f2d0f 100%);
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 2rem 1rem;
         }
 
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             inset: 0;
+            z-index: -1;
             background:
                 radial-gradient(ellipse at 20% 50%, rgba(22,163,74,.15) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 20%, rgba(34,197,94,.1) 0%, transparent 50%);
@@ -279,10 +283,7 @@
         </a>
     </form>
 
-    <div class="demo-badge mb-3">
-        <i class="bi bi-info-circle me-1"></i>
-        <strong>Demo:</strong> admin@quickstack.id / password
-    </div>
+
 
     <div class="text-center" style="font-size: .85rem; color: #cbd5e1;">
         Belum punya akun?

@@ -118,8 +118,17 @@
         </table>
     </div>
     @if($products->hasPages())
-    <div class="px-4 py-3 border-top">
-        {{ $products->links() }}
+    <div class="px-4 py-3 border-top pagination-qs-wrapper">
+        <style>
+            .pagination-qs-wrapper nav { margin-bottom: 0; }
+            .pagination-qs-wrapper .pagination { margin-bottom: 0; gap: 4px; }
+            .pagination-qs-wrapper .page-item .page-link { border-radius: 8px; color: #475569; padding: 0.5rem 0.875rem; border: 1px solid #e2e8f0; font-weight: 500; font-size: 0.875rem; transition: all 0.2s; }
+            .pagination-qs-wrapper .page-item .page-link:hover { background-color: #f8fafc; color: #0f172a; }
+            .pagination-qs-wrapper .page-item.active .page-link { background-color: #10b981; border-color: #10b981; color: white; box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.25); }
+            .pagination-qs-wrapper .page-item.disabled .page-link { background-color: #f8fafc; color: #94a3b8; border-color: #e2e8f0; }
+            .pagination-qs-wrapper p.small.text-muted { margin-bottom: 0; padding-top: 0.35rem; color: #64748b !important; font-size: 0.875rem; }
+        </style>
+        {{ $products->links('pagination::bootstrap-5') }}
     </div>
     @endif
 </div>

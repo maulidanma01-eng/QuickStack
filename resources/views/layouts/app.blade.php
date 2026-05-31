@@ -267,6 +267,13 @@
                 <i class="bi bi-speedometer2"></i> Dashboard
             </a>
         </div>
+        
+        <div class="nav-item-qs">
+            <a href="{{ route('catalog') }}"
+               class="nav-link-qs">
+                <i class="bi bi-shop"></i> Katalog Produk
+            </a>
+        </div>
 
         <div class="sidebar-section mt-2">Inventori</div>
 
