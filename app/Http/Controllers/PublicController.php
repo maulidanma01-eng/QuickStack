@@ -30,4 +30,9 @@ class PublicController extends Controller
 
         return view('public.catalog', compact('products', 'categories'));
     }
+
+    public function help()
+    {
+        return view('public.help');
+    }
 }

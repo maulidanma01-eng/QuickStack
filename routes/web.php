@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // ─── Public Catalog ────────────────────────────────────────────────────────
 Route::get('/', [PublicController::class, 'index'])->name('catalog');
+Route::get('/bantuan', [PublicController::class, 'help'])->name('help');
 
 // ─── Auth ──────────────────────────────────────────────────────────────────
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

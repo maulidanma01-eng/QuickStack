@@ -125,6 +125,9 @@
                 <li class="nav-item">
                     <a class="nav-link fw-500 {{ request()->routeIs('catalog') ? 'text-success fw-600' : 'text-secondary' }}" href="{{ route('catalog') }}">Katalog Produk</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-500 {{ request()->routeIs('help') ? 'text-success fw-600' : 'text-secondary' }}" href="{{ route('help') }}">Bantuan</a>
+                </li>
                 <li class="nav-item ms-lg-3">
                     @auth
                         <a href="{{ route('dashboard') }}" class="btn btn-login-outline w-100">
@@ -147,14 +150,23 @@
 </main>
 
 <!-- Footer -->
-<footer class="footer-qs text-center">
+<footer class="footer-qs text-center mt-5">
     <div class="container">
         <p class="mb-1 text-muted fw-500" style="font-size: 0.9rem;">
             &copy; {{ date('Y') }} QuickStack — Sistem Inventory Digital UMKM Tanah Laut
         </p>
-        <p class="mb-0 text-muted" style="font-size: 0.8rem;">
+        <p class="mb-2 text-muted" style="font-size: 0.8rem;">
             Dibuat untuk memudahkan transaksi dan stok.
         </p>
+        <div class="d-flex justify-content-center align-items-center gap-3">
+            <a href="{{ route('help') }}" class="text-success text-decoration-none" style="font-size: 0.85rem; font-weight: 500;">
+                <i class="bi bi-question-circle me-1"></i> Pusat Bantuan
+            </a>
+            <span class="text-muted" style="font-size: 0.8rem;">|</span>
+            <a href="mailto:quickstackumkm@gmail.com" class="text-success text-decoration-none" style="font-size: 0.85rem; font-weight: 500;">
+                <i class="bi bi-envelope me-1"></i> quickstackumkm@gmail.com
+            </a>
+        </div>
     </div>
 </footer>
 
