@@ -323,7 +323,7 @@
 
     <!-- Sidebar footer -->
     <div class="sidebar-footer">
-        <div class="d-flex align-items-center gap-2">
+        <div class="d-flex align-items-center gap-2 mb-3">
             <div style="width:34px;height:34px;background:linear-gradient(135deg,#16a34a,#22c55e);
                         border-radius:50%;display:flex;align-items:center;justify-content:center;
                         color:#fff;font-weight:700;font-size:.9rem;">
@@ -336,12 +336,24 @@
                 <div style="font-size:.7rem;color:#64748b;">Administrator</div>
             </div>
         </div>
-        <form action="{{ route('logout') }}" method="POST" class="mt-2">
+        
+        <a href="{{ route('profile.edit') }}" class="btn btn-sm w-100 mb-2 {{ request()->routeIs('profile.*') ? 'btn-qs-primary' : '' }}" style="
+            text-align:left;
+            font-size:.85rem;
+            font-weight:500;
+            {{ request()->routeIs('profile.*') ? '' : 'background:rgba(255,255,255,.07);color:#94a3b8;border:1px solid rgba(255,255,255,.08);border-radius:7px;' }}
+        ">
+            <i class="bi bi-person-circle me-1"></i> Profil
+        </a>
+
+        <form action="{{ route('logout') }}" method="POST" class="m-0">
             @csrf
             <button type="submit" class="btn btn-sm w-100" style="
                 background:rgba(239,68,68,.15);color:#fca5a5;
                 border:1px solid rgba(239,68,68,.2);border-radius:7px;
-                font-size:.8rem;">
+                text-align:left;
+                font-size:.85rem;
+                font-weight:500;">
                 <i class="bi bi-box-arrow-right me-1"></i>Logout
             </button>
         </form>

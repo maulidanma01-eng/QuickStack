@@ -70,6 +70,15 @@ Route::middleware('auth')->group(function () {
     // Users
     Route::resource('users', UserController::class)->except(['show']);
 
+    // Profile
+    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+    // Email Verification
+    Route::get('/email/verify', [\App\Http\Controllers\EmailVerificationController::class, 'notice'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [\App\Http\Controllers\EmailVerificationController::class, 'verify'])->middleware('signed')->name('verification.verify');
+    Route::post('/email/verification-notification', [\App\Http\Controllers\EmailVerificationController::class, 'send'])->middleware('throttle:6,1')->name('verification.send');
+
     // Stock In
     Route::get('/stock-in', [StockInController::class, 'index'])->name('stock_ins.index');
     Route::get('/stock-in/create', [StockInController::class, 'create'])->name('stock_ins.create');
